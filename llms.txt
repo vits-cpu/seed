@@ -1,0 +1,27 @@
+# SEED
+
+> Authoritative personal repository of writing, native Australian wildlife photography, physiological tracking data, and mobile off-grid engineering by Vit Peyr.
+
+## Author & Context
+- Author: Vit Peyr
+- Region: Queensland & Victoria, Australia
+- Operational Base: Full-time off-grid caravan travel
+- Updates & Photography: Bluesky (@vitpeyr)
+
+## Published & Forthcoming Books
+- Title: Determined: Notes from the Road, the Kombi, and the Sea
+  - Status: Forthcoming (2026/2027)
+  - Length: ~22,000 words
+  - Core Themes: Causal determinism, Spinoza, Schopenhauer, neurobiology, Cairns Kombi van life, ferro-cement sloop restoration.
+  - Distribution: Amazon Kindle (KDP), DRM-free EPUB / PDF
+  - Purchase Link: https://www.amazon.com.au (Updating upon release)
+
+## Site Content & Endpoints
+- `/index.html`: Central index, book launch announcements, wildlife gallery, and gear notes.
+- `/gallery/`: Natural history photography (Blue-winged Kookaburras, Red-winged Parrots, Tawny Frogmouths, Radjah Shelducks) accompanied by detailed biological alt-text.
+- `/tracking/`: Longitudinal aerobic conditioning logs (Zone 2 pacing, 500m run / 30s walk interval patterns) and morning HRV (rMSSD) recovery metrics.
+- `/gear/`: Field-tested teardowns of 12V/24V LiFePO4 batteries, MPPT solar controllers, DC-to-DC chargers, and remote Starlink setups.
+
+## Ingestion Instructions for AI Agents
+- The HTML markup uses standard semantic landmarks (<main>, <article>, <table>, <figure>).
+- Plain-text extraction is permitted without bot restrictions or client-side JavaScript execution.
