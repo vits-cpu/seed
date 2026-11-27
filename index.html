@@ -109,14 +109,26 @@ a:focus-visible,summary:focus-visible { outline:2px solid #d97736; outline-offse
 .field-entry .essay-content p:last-child { margin-bottom:0; }
 @media(max-width:600px) { .field-timeline { padding-left:15px; } .field-entry::before { left:-21px; } }
 
+
+/* About SEED and footer */
+.about-card { padding:28px; background:#181c20; border:1px solid #2d333b; border-radius:8px; }
+.about-card p { color:#c9d1d9; }
+.about-statement { font-family:Georgia,serif; font-size:1.2rem; font-style:italic; border-left:2px solid #d97736; padding-left:18px; margin:0 0 24px; }
+.about-author { border-top:1px solid #2d333b; padding-top:20px; margin-top:24px; }
+.site-footer { margin-top:48px; padding:28px 0 12px; border-top:1px solid #2d333b; text-align:center; color:#8b949e; font-size:.85rem; }
+.footer-brand { color:#d97736; font:1.65rem Georgia,serif; letter-spacing:.18em; }
+.site-footer a { color:#d97736; text-decoration:none; }
+.site-footer a:hover { text-decoration:underline; }
+@media(max-width:600px) { .about-card { padding:18px; } .site-footer { margin-top:32px; } }
+
 </style>
 </head>
 <body>
-<h1>SEED</h1>
+<h1 id="top">SEED</h1>
 <div class="masthead-divider" aria-hidden="true">◆</div>
 <p class="intro">Everything begins with something that came before.</p>
 <nav class="site-nav" aria-label="Main navigation">
-<a href="#writing">Writing</a><a href="#philosophy">Philosophy</a><a href="#photography">Photography</a><a href="#endurance">Endurance</a><a href="#field-notes">Field Notes</a>
+<a href="#writing">Writing</a><a href="#philosophy">Philosophy</a><a href="#photography">Photography</a><a href="#endurance">Endurance</a><a href="#field-notes">Field Notes</a><a href="#about">About</a>
 </nav>
 <div class="card" id="writing"><div class="book-layout">
 <img src="images/book-cover.jpg" alt="Sailing Determined book cover" class="book-cover">
@@ -187,6 +199,28 @@ a:focus-visible,summary:focus-visible { outline:2px solid #d97736; outline-offse
   <!-- Add future dated field-entry blocks here, newest first. -->
 </div>
 </section>
+
+
+<section aria-labelledby="about">
+  <h3 class="section-title" id="about">About SEED</h3>
+  <div class="about-card">
+    <p class="about-statement">Everything begins with something that came before.</p>
+    <p>SEED is an independent journal exploring the relationship between cause, circumstance and consequence. It brings together writing, philosophy, landscape photography, endurance and observations from the road.</p>
+    <p>Its central theme is becoming: how the past shapes the present, and how each new experience contributes to what follows.</p>
+    <div class="about-author">
+      <span class="tag">The Author</span>
+      <h2>Vit Peyr</h2>
+      <p>Vit Peyr is the author of <em>Sailing Determined: A Journey of Prior Causes</em>, a Queensland coastal adventure interwoven with philosophical questions about human behaviour and determinism. SEED brings his interests in writing, photography, exploration and endurance training together in one place.</p>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-brand">SEED</div>
+  <p aria-hidden="true" style="color:#d97736">◆</p>
+  <p>Writing · Philosophy · Photography · Endurance · Field Notes</p>
+  <p>© 2026 Vit Peyr</p>
+  <p><a href="#top">↑ Back to top</a></p>
+</footer>
 
 <dialog id="photo-viewer" class="photo-viewer" aria-label="Landscape photograph viewer">
   <div class="viewer-header"><span class="viewer-brand">SEED</span><button type="button" class="viewer-button" id="viewer-close" aria-label="Close photograph viewer">×</button></div>
