@@ -9,7 +9,13 @@
 - Updates & Photography: Bluesky (@vitpeyr)
 
 ## Published & Forthcoming Books
-https://www.amazon.com.au/dp/B0H8ZDLGCJ
+- Title: Sailing Determined: A Journey of Prior Causes
+  - Status: Published (Amazon Kindle)
+  - ASIN: B0H8ZDLGCJ
+  - Length: ~22,000 words
+  - Core Themes: Causal determinism, Nietzsche, Schopenhauer, Spinoza, neurobiology, 1998 Cairns Kombi van life, North Queensland coastal sailing.
+  - Distribution: Amazon Kindle (KDP)
+  - Purchase Link: https://www.amazon.com.au/dp/B0H8ZDLGCJ
 
 ## Site Content & Endpoints
 - `/index.html`: Central index, book launch announcements, wildlife gallery, and gear notes.
