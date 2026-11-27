@@ -90,6 +90,7 @@
     }
 
     #writing,
+    #philosophy,
     #photography,
     #endurance {
       scroll-margin-top: 24px;
@@ -176,6 +177,85 @@
       color: #8b949e;
       margin-bottom: 16px;
       font-size: 0.95rem;
+    }
+
+    /* Philosophy and Essays */
+
+    .essay {
+      background: #181c20;
+      border: 1px solid #2d333b;
+      border-radius: 8px;
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    .essay summary {
+      position: relative;
+      cursor: pointer;
+      padding: 20px 48px 20px 20px;
+      list-style: none;
+      transition: background 0.3s ease;
+    }
+
+    .essay summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .essay summary:hover {
+      background: #22272e;
+    }
+
+    .essay summary::after {
+      content: "+";
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #d97736;
+      font-size: 1.6rem;
+    }
+
+    .essay[open] summary::after {
+      content: "−";
+    }
+
+    .essay-number {
+      display: block;
+      color: #d97736;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 6px;
+    }
+
+    .essay-title {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 1.25rem;
+      color: #e6edf3;
+    }
+
+    .essay-preview {
+      display: block;
+      color: #8b949e;
+      font-size: 0.85rem;
+      margin-top: 5px;
+    }
+
+    .essay-content {
+      padding: 8px 24px 24px;
+      border-top: 1px solid #2d333b;
+      font-family: Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #c9d1d9;
+    }
+
+    .essay-quote {
+      border-left: 2px solid #d97736;
+      margin: 24px 0;
+      padding-left: 18px;
+      font-style: italic;
+      color: #b4b9be;
     }
 
     /* Photography Gallery */
@@ -285,6 +365,11 @@
         max-width: 85%;
       }
 
+      .essay-content {
+        padding: 8px 18px 20px;
+        font-size: 1rem;
+      }
+
       .gallery-grid {
         grid-template-columns: 1fr;
       }
@@ -324,6 +409,7 @@
 
   <nav class="site-nav" aria-label="Main navigation">
     <a href="#writing">Writing</a>
+    <a href="#philosophy">Philosophy</a>
     <a href="#photography">Photography</a>
     <a href="#endurance">Endurance</a>
   </nav>
@@ -357,6 +443,106 @@
       </div>
     </div>
   </div>
+
+  <!-- Philosophy and Essays -->
+
+  <h3 class="section-title" id="philosophy">
+    Philosophy &amp; Essays
+  </h3>
+
+  <p class="section-desc">
+    Explorations of determinism, consciousness, human behaviour and the forces that shape existence.
+  </p>
+
+  <details class="essay">
+    <summary>
+      <span class="essay-number">ESSAY 001</span>
+      <span class="essay-title">The Illusion of Choice</span>
+      <span class="essay-preview">
+        Determinism and the origins of human decisions.
+      </span>
+    </summary>
+
+    <div class="essay-content">
+
+      <p>
+        Before we make a decision, countless events have already shaped the person making it. Genetics, upbringing, environment and experience all contribute to what we perceive as choice.
+      </p>
+
+      <p>
+        We arrive at each moment carrying a history we did not entirely choose. Our preferences, fears, ambitions and beliefs emerge from circumstances extending far beyond our conscious awareness.
+      </p>
+
+      <p>
+        Determinism invites us to examine whether the experience of choosing necessarily means that our choices are independent of prior causes.
+      </p>
+
+      <p class="essay-quote">
+        Perhaps the question is not simply what we choose, but what made us the person who chooses.
+      </p>
+
+    </div>
+  </details>
+
+  <details class="essay">
+    <summary>
+      <span class="essay-number">ESSAY 002</span>
+      <span class="essay-title">The Architecture of Becoming</span>
+      <span class="essay-preview">
+        Neuroplasticity, experience and the changing brain.
+      </span>
+    </summary>
+
+    <div class="essay-content">
+
+      <p>
+        Even within a deterministic universe, change remains possible. Every new experience becomes another cause, influencing the architecture of the brain and shaping future behaviour.
+      </p>
+
+      <p>
+        Neuroplasticity describes the capacity of the nervous system to change through experience, learning and repeated activity.
+      </p>
+
+      <p>
+        Understanding the causes of our behaviour may itself become a cause of behavioural change. Knowledge, education and unfamiliar experiences can alter the conditions from which future decisions emerge.
+      </p>
+
+      <p class="essay-quote">
+        Being shaped by the past does not mean remaining unchanged by the present.
+      </p>
+
+    </div>
+  </details>
+
+  <details class="essay">
+    <summary>
+      <span class="essay-number">ESSAY 003</span>
+      <span class="essay-title">The Seed of Causality</span>
+      <span class="essay-preview">
+        Nothing begins in isolation.
+      </span>
+    </summary>
+
+    <div class="essay-content">
+
+      <p>
+        A seed carries the consequences of everything that preceded it. Its genetic inheritance, the soil in which it falls, the availability of water and the warmth of the sun all influence what it may become.
+      </p>
+
+      <p>
+        Human existence can be understood through a similar metaphor. We emerge from an intricate history of biological inheritance, environmental conditions and accumulated experiences.
+      </p>
+
+      <p>
+        SEED is an exploration of that unfolding relationship between cause and consequence, expressed through writing, observation, photography and physical experience.
+      </p>
+
+      <p class="essay-quote">
+        Everything begins with something that came before.
+      </p>
+
+    </div>
+  </details>
 
   <!-- Landscape Gallery -->
 
