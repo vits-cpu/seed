@@ -99,6 +99,16 @@ a:focus-visible,summary:focus-visible { outline:2px solid #d97736; outline-offse
 .viewer-caption { font-family:Georgia,serif; font-size:1.2rem; margin:0; }
 .viewer-count,.viewer-hint { font-size:.8rem; color:#aab0b6; margin:4px 0; }
 @media(max-width:600px) { .viewer-stage { position:relative; padding:0 4px; } .viewer-stage .viewer-button { position:absolute; z-index:1; background:rgba(24,28,32,.85); width:40px; height:40px; } #viewer-prev { left:8px; } #viewer-next { right:8px; } .viewer-header { padding:8px 12px; } }
+
+/* Field Notes */
+.field-intro { font-family:Georgia,serif; color:#b4b9be; font-style:italic; }
+.field-timeline { border-left:1px solid #665044; margin:24px 0 0 8px; padding-left:22px; }
+.field-entry { position:relative; }
+.field-entry::before { content:""; position:absolute; left:-28px; top:27px; width:9px; height:9px; background:#d97736; border:2px solid #111315; border-radius:50%; }
+.field-date { display:block; font-size:.75rem; letter-spacing:.06em; color:#aab2ba; margin-bottom:8px; }
+.field-entry .essay-content p:last-child { margin-bottom:0; }
+@media(max-width:600px) { .field-timeline { padding-left:15px; } .field-entry::before { left:-21px; } }
+
 </style>
 </head>
 <body>
@@ -106,7 +116,7 @@ a:focus-visible,summary:focus-visible { outline:2px solid #d97736; outline-offse
 <div class="masthead-divider" aria-hidden="true">◆</div>
 <p class="intro">Everything begins with something that came before.</p>
 <nav class="site-nav" aria-label="Main navigation">
-<a href="#writing">Writing</a><a href="#philosophy">Philosophy</a><a href="#photography">Photography</a><a href="#endurance">Endurance</a>
+<a href="#writing">Writing</a><a href="#philosophy">Philosophy</a><a href="#photography">Photography</a><a href="#endurance">Endurance</a><a href="#field-notes">Field Notes</a>
 </nav>
 <div class="card" id="writing"><div class="book-layout">
 <img src="images/book-cover.jpg" alt="Sailing Determined book cover" class="book-cover">
@@ -153,6 +163,30 @@ a:focus-visible,summary:focus-visible { outline:2px solid #d97736; outline-offse
 <div class="metric-card"><div class="metric-label">Training time</div><div class="metric-value">400</div><div class="metric-unit">minutes / week</div></div>
 </div><p class="dashboard-note">Planned targets, adjusted according to recovery and physical condition. Resting HR reference: 48–51 bpm. Recovery HR target: below 110 bpm. HRV goal: optimal readiness.</p></div>
 <div class="dashboard-panel"><h4 class="panel-title">Recovery Monitoring</h4><p><strong>HRV</strong> — observing changes relative to a personal baseline.</p><p><strong>Resting HR</strong> — monitoring cardiovascular response to accumulated training load.</p><p><strong>Aerobic intensity</strong> — balancing distance, pace and perceived effort.</p><p><strong>Recovery</strong> — allowing time for adaptation between training sessions.</p><p class="dashboard-note">Personal training observations rather than medical advice.</p></div>
+
+
+<!-- Field Notes: add new entries above older entries -->
+<section aria-labelledby="field-notes">
+<h3 class="section-title" id="field-notes">Field Notes</h3>
+<p class="section-desc">Observations from the road, the natural world and the everyday process of becoming.</p>
+<p class="field-intro">Small encounters, passing landscapes and thoughts worth keeping.</p>
+<div class="field-timeline">
+  <div class="field-entry">
+    <details class="essay">
+      <summary>
+        <span class="field-date"><time datetime="2026-11-28">28 November 2026</time> · Journal</span>
+        <span class="essay-title">A Place for Observations</span>
+        <span class="essay-preview">The beginning of the SEED field journal.</span>
+      </summary>
+      <div class="essay-content">
+        <p>Field Notes is a space for recording the ordinary and the unexpected: a landscape, a passing thought, an encounter with nature or a moment that invites further reflection.</p>
+        <p>Over time, these fragments can form a record of the relationship between experience, observation and change.</p>
+      </div>
+    </details>
+  </div>
+  <!-- Add future dated field-entry blocks here, newest first. -->
+</div>
+</section>
 
 <dialog id="photo-viewer" class="photo-viewer" aria-label="Landscape photograph viewer">
   <div class="viewer-header"><span class="viewer-brand">SEED</span><button type="button" class="viewer-button" id="viewer-close" aria-label="Close photograph viewer">×</button></div>
