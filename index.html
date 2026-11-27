@@ -162,6 +162,36 @@
     tr:last-child td {
       border-bottom: none;
     }
+    .book-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.book-cover {
+  width: 220px;
+  max-width: 40%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+.book-details {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .book-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .book-cover {
+    width: 200px;
+    max-width: 70%;
+  }
+}
   </style>
 </head>
 <body>
@@ -175,14 +205,31 @@
 </p>
 
 <!-- Book Card -->
-  <div class="card">
-    <span class="tag">Kindle E-Book</span>
-    <h2>Sailing Determined: A Journey of Prior Causes</h2>
-    <p>
-      In 1998, living out of a battered Kombi van in Cairns with ten thousand dollars under the seat and zero sailing experience, Vit spends eighty per cent of everything he owns on an impounded twenty-eight-foot yacht named <em>Determined</em>. A raw, funny Queensland coastal adventure weaving Nietzsche, Schopenhauer, Spinoza and modern neurobiology into wind, tide and circumstance.
-    </p>
-    <a href="https://www.amazon.com.au/dp/B0H8ZDLGCJ" class="btn" target="_blank">Available on Amazon Kindle</a>
+<!-- Book Card -->
+<div class="card">
+  <div class="book-layout">
+
+    <img src="images/book-cover.jpg"
+         alt="Sailing Determined book cover"
+         class="book-cover">
+
+    <div class="book-details">
+      <span class="tag">Kindle E-Book</span>
+
+      <h2>Sailing Determined: A Journey of Prior Causes</h2>
+
+      <p>
+        In 1998, living out of a battered Kombi van in Cairns with ten thousand dollars under the seat and zero sailing experience, Vit spends eighty per cent of everything he owns on an impounded twenty-eight-foot yacht named <em>Determined</em>. A raw, funny Queensland coastal adventure weaving Nietzsche, Schopenhauer, Spinoza and modern neurobiology into wind, tide and circumstance.
+      </p>
+
+      <a href="https://www.amazon.com.au/dp/B0H8ZDLGCJ"
+         class="btn" target="_blank">
+        Available on Amazon Kindle
+      </a>
+    </div>
+
   </div>
+</div>
 
    <!-- Landscape Gallery -->
   <h3 class="section-title">Landscape Photography</h3>
