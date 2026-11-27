@@ -83,6 +83,22 @@ a:focus-visible,summary:focus-visible { outline:2px solid #d97736; outline-offse
  .metric-value { font-size:1.65rem; }
 }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none !important; } }
+
+/* Full-screen photograph viewer */
+.photo-viewer { position:fixed; inset:0; width:100%; height:100%; max-width:none; max-height:none; box-sizing:border-box; margin:0; padding:0; border:0; background:#090a0b; color:#e6edf3; overflow:hidden; }
+.photo-viewer::backdrop { background:#090a0b; }
+.photo-viewer[open] { display:flex; flex-direction:column; }
+.viewer-header { display:flex; align-items:center; justify-content:space-between; padding:12px 20px; gap:12px; }
+.viewer-brand { color:#d97736; font-family:Georgia,serif; letter-spacing:.2em; }
+.viewer-button { background:#181c20; color:#e6edf3; border:1px solid #665044; border-radius:50%; width:48px; height:48px; flex-shrink:0; font-size:26px; cursor:pointer; line-height:1; }
+.viewer-button:hover { background:#30363d; color:#d97736; }
+.viewer-button:focus-visible { outline:2px solid #d97736; outline-offset:3px; }
+.viewer-stage { flex:1; min-height:0; display:flex; align-items:center; justify-content:center; gap:12px; padding:0 16px; }
+.viewer-stage img { display:block; width:100%; height:100%; min-width:0; object-fit:contain; touch-action:pan-y pinch-zoom; }
+.viewer-footer { text-align:center; padding:12px 16px max(16px,env(safe-area-inset-bottom)); }
+.viewer-caption { font-family:Georgia,serif; font-size:1.2rem; margin:0; }
+.viewer-count,.viewer-hint { font-size:.8rem; color:#aab0b6; margin:4px 0; }
+@media(max-width:600px) { .viewer-stage { position:relative; padding:0 4px; } .viewer-stage .viewer-button { position:absolute; z-index:1; background:rgba(24,28,32,.85); width:40px; height:40px; } #viewer-prev { left:8px; } #viewer-next { right:8px; } .viewer-header { padding:8px 12px; } }
 </style>
 </head>
 <body>
@@ -137,4 +153,67 @@ a:focus-visible,summary:focus-visible { outline:2px solid #d97736; outline-offse
 <div class="metric-card"><div class="metric-label">Training time</div><div class="metric-value">400</div><div class="metric-unit">minutes / week</div></div>
 </div><p class="dashboard-note">Planned targets, adjusted according to recovery and physical condition. Resting HR reference: 48–51 bpm. Recovery HR target: below 110 bpm. HRV goal: optimal readiness.</p></div>
 <div class="dashboard-panel"><h4 class="panel-title">Recovery Monitoring</h4><p><strong>HRV</strong> — observing changes relative to a personal baseline.</p><p><strong>Resting HR</strong> — monitoring cardiovascular response to accumulated training load.</p><p><strong>Aerobic intensity</strong> — balancing distance, pace and perceived effort.</p><p><strong>Recovery</strong> — allowing time for adaptation between training sessions.</p><p class="dashboard-note">Personal training observations rather than medical advice.</p></div>
+
+<dialog id="photo-viewer" class="photo-viewer" aria-label="Landscape photograph viewer">
+  <div class="viewer-header"><span class="viewer-brand">SEED</span><button type="button" class="viewer-button" id="viewer-close" aria-label="Close photograph viewer">×</button></div>
+  <div class="viewer-stage">
+    <button type="button" class="viewer-button" id="viewer-prev" aria-label="Previous photograph">‹</button>
+    <img id="viewer-image" alt="">
+    <button type="button" class="viewer-button" id="viewer-next" aria-label="Next photograph">›</button>
+  </div>
+  <div class="viewer-footer" aria-live="polite"><p class="viewer-caption" id="viewer-caption"></p><p class="viewer-count" id="viewer-count"></p><p class="viewer-hint">Use arrows or swipe to browse · Esc to close</p></div>
+</dialog>
+<script>
+(() => {
+  const links = [...document.querySelectorAll('.gallery-grid .gallery-item a')];
+  const viewer = document.getElementById('photo-viewer');
+  const image = document.getElementById('viewer-image');
+  const close = document.getElementById('viewer-close');
+  if (!links.length || typeof viewer.showModal !== 'function') return;
+  let current = 0, opener = null, previousOverflow = '', touch = null;
+  function show(index) {
+    current = (index + links.length) % links.length;
+    const link = links[current];
+    image.src = link.href;
+    image.alt = link.querySelector('img').alt;
+    document.getElementById('viewer-caption').textContent = link.closest('.gallery-item').querySelector('.gallery-caption').textContent;
+    document.getElementById('viewer-count').textContent = `${current + 1} / ${links.length}`;
+  }
+  links.forEach((link, index) => link.addEventListener('click', event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    opener = link;
+    show(index);
+    previousOverflow = document.body.style.overflow;
+    viewer.showModal();
+    document.body.style.overflow = 'hidden';
+    close.focus();
+  }));
+  close.addEventListener('click', () => viewer.close());
+  document.getElementById('viewer-prev').addEventListener('click', () => show(current - 1));
+  document.getElementById('viewer-next').addEventListener('click', () => show(current + 1));
+  viewer.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault(); show(current + (event.key === 'ArrowLeft' ? -1 : 1));
+    }
+  });
+  viewer.addEventListener('close', () => {
+    document.body.style.overflow = previousOverflow;
+    if (opener) opener.focus({preventScroll:true});
+    touch = null;
+  });
+  image.addEventListener('touchstart', event => {
+    touch = event.touches.length === 1 ? {x:event.touches[0].clientX,y:event.touches[0].clientY} : null;
+  }, {passive:true});
+  image.addEventListener('touchmove', event => { if (event.touches.length > 1) touch = null; }, {passive:true});
+  image.addEventListener('touchcancel', () => {touch = null;});
+  image.addEventListener('touchend', event => {
+    if (!touch || !event.changedTouches.length) return;
+    const dx = event.changedTouches[0].clientX - touch.x;
+    const dy = event.changedTouches[0].clientY - touch.y;
+    if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)*1.5) show(current + (dx < 0 ? 1 : -1));
+    touch = null;
+  }, {passive:true});
+})();
+</script>
 </body></html>
